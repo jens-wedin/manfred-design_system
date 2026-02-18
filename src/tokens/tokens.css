@@ -238,4 +238,15 @@
   --size-container-xl:  80rem;   /* 1280px */
   --size-container-2xl: 96rem;   /* 1536px */
 
+  /* --- Feedback / Status colors --- */
+
+  --color-feedback-success-bg: #d1fae5;
+  --color-feedback-success-fg: #065f46;
+  --color-feedback-warning-bg: #fef3c7;
+  --color-feedback-warning-fg: #92400e;
+  --color-feedback-error-bg:   #fee2e2;
+  --color-feedback-error-fg:   #991b1b;
+  --color-feedback-info-bg:    var(--blue-50);
+  --color-feedback-info-fg:    var(--blue-700);
+
 }
