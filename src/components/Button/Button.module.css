@@ -1,0 +1,100 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* --- Sizes --- */
+
+.sm {
+  font-size: var(--font-size-sm);
+  padding: var(--space-2) var(--space-4);
+}
+
+.md {
+  font-size: var(--font-size-md);
+  padding: var(--space-3) var(--space-6);
+}
+
+.lg {
+  font-size: var(--font-size-lg);
+  padding: var(--space-4) var(--space-8);
+}
+
+/* --- Variant: primary (dark fill) --- */
+
+.primary {
+  background-color: var(--color-almost-black);
+  color: var(--color-white);
+  border-color: var(--color-almost-black);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: #2e2e37;
+  border-color: #2e2e37;
+}
+
+/* --- Variant: brand (blue fill) --- */
+
+.brand {
+  background-color: var(--color-business-blue);
+  color: var(--color-white);
+  border-color: var(--color-business-blue);
+}
+
+.brand:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+/* --- Variant: outline --- */
+
+.outline {
+  background-color: transparent;
+  color: var(--color-almost-black);
+  border-color: var(--color-almost-black);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--color-light-beige);
+}
+
+/* --- Variant: ghost --- */
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-almost-black);
+  border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-light-beige);
+}
+
+/* --- States --- */
+
+.fullWidth {
+  width: 100%;
+}
+
+.root:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.loading {
+  opacity: 0.7;
+  cursor: wait;
+}

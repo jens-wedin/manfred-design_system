@@ -1,0 +1,76 @@
+/* ============================================
+   MANFRED DESIGN SYSTEM — DESIGN TOKENS
+   CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* --- Colors: Raw Palette --- */
+  --color-almost-black: #1e1e24;
+  --color-business-blue: #2c28ec;
+  --color-human-pink: #efd6d3;
+  --color-beige: #e6dcc8;
+  --color-light-beige: #f4f3e8;
+  --color-white: #ffffff;
+
+  /* --- Colors: Semantic Aliases --- */
+  --color-text-primary: var(--color-almost-black);
+  --color-text-inverse: var(--color-white);
+  --color-brand-primary: var(--color-business-blue);
+  --color-surface-default: var(--color-white);
+  --color-surface-warm: var(--color-light-beige);
+  --color-surface-beige: var(--color-beige);
+  --color-surface-pink: var(--color-human-pink);
+  --color-surface-dark: var(--color-almost-black);
+  --color-surface-brand: var(--color-business-blue);
+
+  /* --- Typography --- */
+  --font-family-base: 'Host Grotesk', sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-md: 1rem;      /* 16px — base */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 2rem;     /* 32px */
+  --font-size-4xl: 2.5rem;   /* 40px */
+  --font-size-5xl: 3.5rem;   /* 56px */
+
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+
+  /* --- Spacing (4px base grid) --- */
+  --space-1: 0.25rem;  /* 4px  */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+
+  /* --- Border Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
