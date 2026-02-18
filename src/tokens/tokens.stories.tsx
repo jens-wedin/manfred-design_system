@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { blue, neutral, warm } from './primitives';
+import { size, controlSize, iconSize, containerSize } from './sizing';
 
 const meta: Meta = {
   title: 'Foundation/Tokens',
@@ -251,6 +252,117 @@ export const SemanticTokens: Story = {
 
       <Section title="Interactive — Ghost variant">
         <SemanticSwatch cssVar="var(--color-interactive-ghost-bg-hover)" label="ghost-bg-hover" light />
+      </Section>
+
+    </div>
+  ),
+};
+
+/* ======================================================
+   STORY 4: Sizing Tokens
+   ====================================================== */
+
+function SizeBar({ name, value }: { name: string; value: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+      <div
+        style={{
+          width: value,
+          maxWidth: '100%',
+          height: 24,
+          borderRadius: 4,
+          backgroundColor: '#2c28ec',
+          flexShrink: 0,
+          minWidth: 4,
+        }}
+      />
+      <div style={{ ...label, whiteSpace: 'nowrap' }}>
+        <span style={{ fontWeight: 600 }}>{name}</span>
+        <span style={{ color: '#888', marginLeft: 8 }}>{value}</span>
+      </div>
+    </div>
+  );
+}
+
+function ContainerBar({ name, value }: { name: string; value: string }) {
+  return (
+    <div style={{ marginBottom: 10 }}>
+      <div style={{ ...label, fontWeight: 600, marginBottom: 4 }}>
+        {name} <span style={{ color: '#888', fontWeight: 400 }}>{value}</span>
+      </div>
+      <div
+        style={{
+          width: value,
+          maxWidth: '100%',
+          height: 20,
+          borderRadius: 4,
+          backgroundColor: '#eaeafd',
+          border: '1.5px solid #2c28ec',
+        }}
+      />
+    </div>
+  );
+}
+
+export const SizingTokens: Story = {
+  name: 'Sizing',
+  render: () => (
+    <div style={{ fontFamily: 'sans-serif', maxWidth: 640 }}>
+
+      <Section title="Primitive Size Scale">
+        {(Object.keys(size) as unknown as (keyof typeof size)[]).map((step) => (
+          <SizeBar key={step} name={`--size-${step}`} value={size[step]} />
+        ))}
+      </Section>
+
+      <Section title="Component Heights">
+        {(Object.keys(controlSize) as (keyof typeof controlSize)[]).map((key) => (
+          <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+            <div
+              style={{
+                width: 120,
+                height: controlSize[key],
+                borderRadius: 4,
+                backgroundColor: '#2c28ec',
+                flexShrink: 0,
+              }}
+            />
+            <div style={label}>
+              <span style={{ fontWeight: 600 }}>{`--size-control-${key}`}</span>
+              <span style={{ color: '#888', marginLeft: 8 }}>{controlSize[key]}</span>
+            </div>
+          </div>
+        ))}
+      </Section>
+
+      <Section title="Icon Sizes">
+        <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+          {(Object.keys(iconSize) as (keyof typeof iconSize)[]).map((key) => (
+            <div key={key} style={{ textAlign: 'center' }}>
+              <div
+                style={{
+                  width: iconSize[key],
+                  height: iconSize[key],
+                  borderRadius: 4,
+                  backgroundColor: '#2c28ec',
+                  margin: '0 auto',
+                }}
+              />
+              <div style={{ ...label, marginTop: 6, color: '#888' }}>{key}</div>
+              <div style={{ ...label, color: '#bbb' }}>{iconSize[key]}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Container Max-widths">
+        {(Object.keys(containerSize) as (keyof typeof containerSize)[]).map((key) => (
+          <ContainerBar
+            key={key}
+            name={`--size-container-${key}`}
+            value={containerSize[key]}
+          />
+        ))}
       </Section>
 
     </div>

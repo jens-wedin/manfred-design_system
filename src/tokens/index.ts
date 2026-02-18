@@ -26,3 +26,7 @@ export { fontFamily, fontWeight, fontSize, lineHeight } from './typography';
 export { spacing } from './spacing';
 export type { FontWeightToken, FontSizeToken } from './typography';
 export type { SpacingToken } from './spacing';
+
+/* --- Sizing primitives & semantic sizes --- */
+export { size, controlSize, iconSize, containerSize } from './sizing';
+export type { SizeToken, ControlSizeToken, IconSizeToken, ContainerSizeToken } from './sizing';
