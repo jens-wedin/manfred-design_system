@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Typography } from './Typography';
 
 const meta: Meta<typeof Typography> = {
@@ -51,9 +51,6 @@ export const AllVariants: Story = {
 };
 
 export const ColorVariants: Story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <Typography variant="headline3" color="inverse">Inverse — White on dark</Typography>
@@ -62,4 +59,9 @@ export const ColorVariants: Story = {
       <Typography variant="body" color="muted">Muted — 60% opacity text for secondary information.</Typography>
     </div>
   ),
+  globals: {
+    backgrounds: {
+      value: "dark"
+    }
+  },
 };

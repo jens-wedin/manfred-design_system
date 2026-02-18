@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import '../src/styles/fonts.css';
 import '../src/tokens/tokens.css';
 
@@ -11,17 +11,22 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'white',
-      values: [
-        { name: 'white',       value: '#ffffff' },
-        { name: 'light beige', value: '#f4f3e8' },
-        { name: 'beige',       value: '#e6dcc8' },
-        { name: 'human pink',  value: '#efd6d3' },
-        { name: 'dark',        value: '#1e1e24' },
-        { name: 'brand blue',  value: '#2c28ec' },
-      ],
+      options: {
+        white: { name: 'white',       value: '#ffffff' },
+        light_beige: { name: 'light beige', value: '#f4f3e8' },
+        beige: { name: 'beige',       value: '#e6dcc8' },
+        human_pink: { name: 'human pink',  value: '#efd6d3' },
+        dark: { name: 'dark',        value: '#1e1e24' },
+        brand_blue: { name: 'brand blue',  value: '#2c28ec' }
+      }
     },
   },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'white'
+    }
+  }
 };
 
 export default preview;
