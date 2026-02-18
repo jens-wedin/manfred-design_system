@@ -6,7 +6,7 @@
   font-weight: var(--font-weight-semibold);
   border: 2px solid transparent;
   cursor: pointer;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
@@ -37,50 +37,78 @@
 /* --- Variant: primary (dark fill) --- */
 
 .primary {
-  background-color: var(--color-almost-black);
-  color: var(--color-white);
-  border-color: var(--color-almost-black);
+  background-color: var(--color-interactive-primary-bg);
+  color: var(--color-interactive-primary-fg);
+  border-color: var(--color-interactive-primary-bg);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: #2e2e37;
-  border-color: #2e2e37;
+  background-color: var(--color-interactive-primary-bg-hover);
+  border-color: var(--color-interactive-primary-bg-hover);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-interactive-primary-bg-active);
+  border-color: var(--color-interactive-primary-bg-active);
 }
 
 /* --- Variant: brand (blue fill) --- */
 
 .brand {
-  background-color: var(--color-business-blue);
-  color: var(--color-white);
-  border-color: var(--color-business-blue);
+  background-color: var(--color-interactive-brand-bg);
+  color: var(--color-interactive-brand-fg);
+  border-color: var(--color-interactive-brand-bg);
 }
 
 .brand:hover:not(:disabled) {
-  opacity: 0.88;
+  background-color: var(--color-interactive-brand-bg-hover);
+  border-color: var(--color-interactive-brand-bg-hover);
+}
+
+.brand:active:not(:disabled) {
+  background-color: var(--color-interactive-brand-bg-active);
+  border-color: var(--color-interactive-brand-bg-active);
 }
 
 /* --- Variant: outline --- */
 
 .outline {
   background-color: transparent;
-  color: var(--color-almost-black);
-  border-color: var(--color-almost-black);
+  color: var(--color-text-primary);
+  border-color: var(--color-interactive-outline-border);
 }
 
 .outline:hover:not(:disabled) {
-  background-color: var(--color-light-beige);
+  background-color: var(--color-interactive-outline-bg-hover);
+  border-color: var(--color-interactive-outline-border-hover);
 }
 
 /* --- Variant: ghost --- */
 
 .ghost {
   background-color: transparent;
-  color: var(--color-almost-black);
+  color: var(--color-text-primary);
   border-color: transparent;
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: var(--color-light-beige);
+  background-color: var(--color-interactive-ghost-bg-hover);
+}
+
+/* --- Variant: inverse (white fill for brand/dark backgrounds) --- */
+
+.inverse {
+  background-color: var(--color-interactive-inverse-bg);
+  color: var(--color-interactive-inverse-fg);
+  border-color: transparent;
+}
+
+.inverse:hover:not(:disabled) {
+  background-color: var(--color-interactive-inverse-bg-hover);
+}
+
+.inverse:active:not(:disabled) {
+  background-color: var(--color-interactive-inverse-bg-active);
 }
 
 /* --- States --- */
