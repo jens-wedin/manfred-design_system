@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-Light.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-LightItalic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-LightItalic.ttf') format('truetype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-Italic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-Medium.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -45,7 +45,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-MediumItalic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-MediumItalic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -53,7 +53,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-SemiBold.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -61,7 +61,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-SemiBoldItalic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-SemiBoldItalic.ttf') format('truetype');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -69,7 +69,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -77,7 +77,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-BoldItalic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -85,7 +85,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-ExtraBold.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -93,7 +93,7 @@
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/HostGrotesk-ExtraBoldItalic.ttf') format('truetype');
+  src: url('../assets/fonts/HostGrotesk-ExtraBoldItalic.ttf') format('truetype');
   font-weight: 800;
   font-style: italic;
   font-display: swap;

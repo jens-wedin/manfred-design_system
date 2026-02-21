@@ -25,9 +25,13 @@ manfred-design_system/
 ├── src/
 │   ├── tokens/
 │   │   ├── colors.ts
+│   │   ├── primitives.ts
+│   │   ├── semantic.ts
+│   │   ├── sizing.ts
 │   │   ├── typography.ts
 │   │   ├── spacing.ts
 │   │   ├── index.ts
+│   │   ├── tokens.stories.tsx
 │   │   └── tokens.css                  ← CSS custom properties (runtime truth)
 │   ├── styles/
 │   │   └── fonts.css                   ← @font-face for Host Grotesk
@@ -92,6 +96,25 @@ Polymorphic text component.
 - Variants: `wordmark` | `monogram`
 - Colors: `blue` | `black` | `white`
 - Props: `variant`, `color`, `height`, `aria-label`, `className`
+
+---
+
+## Additional Components Implemented
+The following components have been scaffolded beyond the initial v1 scope:
+- `Alert`
+- `Badge`
+- `Breadcrumb`
+- `Checkbox`
+- `FormField`
+- `Icon`
+- `Modal`
+- `ProgressBar`
+- `Radio`
+- `SearchBar`
+- `Spinner`
+- `TextInput`
+- `Toast`
+- `Tooltip`
 
 ---
 
