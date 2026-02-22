@@ -38,7 +38,7 @@ export function ProgressBar({
         aria-valuenow={clamped}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={label}
+        aria-label={label ?? 'Progress'}
         className={[styles.track, styles[size]].filter(Boolean).join(' ')}
       >
         <div

@@ -49,6 +49,7 @@ export function TextInput({
       <input
         className={[styles.input, styles[`input-${size}`]].filter(Boolean).join(' ')}
         disabled={disabled}
+        aria-invalid={status === 'error' ? true : undefined}
         {...rest}
       />
       {trailingIcon && (

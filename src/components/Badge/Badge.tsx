@@ -11,11 +11,16 @@ export interface BadgeProps {
   className?: string;
 }
 
+const STATUS_VARIANTS: BadgeVariant[] = ['success', 'warning', 'error', 'info'];
+
 export function Badge({ variant = 'neutral', size = 'md', children, className }: BadgeProps) {
+  const hasStatusPrefix = STATUS_VARIANTS.includes(variant);
+
   return (
     <span
       className={[styles.root, styles[variant], styles[size], className].filter(Boolean).join(' ')}
     >
+      {hasStatusPrefix && <span className={styles.srOnly}>{variant}: </span>}
       {children}
     </span>
   );

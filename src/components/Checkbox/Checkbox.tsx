@@ -43,6 +43,7 @@ export function Checkbox({
         onChange={onChange}
         disabled={disabled}
         id={id}
+        aria-invalid={error ? true : undefined}
         {...rest}
       />
       <span className={styles.control} aria-hidden="true">

@@ -92,6 +92,10 @@ export function Tooltip({ content, placement = 'top', delay = 200, children }: T
       children.props.onBlur?.(e);
       hide();
     },
+    onKeyDown: (e: React.KeyboardEvent) => {
+      children.props.onKeyDown?.(e);
+      if (e.key === 'Escape') hide();
+    },
     'aria-describedby': tooltipId,
   });
 

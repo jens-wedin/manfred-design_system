@@ -42,15 +42,17 @@ export function Modal({
     return () => document.removeEventListener('keydown', handler);
   }, [isOpen, closeOnEscape, onClose]);
 
-  // Body scroll lock + initial focus
+  // Body scroll lock + initial focus + restore focus on close
   useEffect(() => {
     if (!isOpen) return;
+    const trigger = document.activeElement as HTMLElement | null;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const firstFocusable = panelRef.current?.querySelector<HTMLElement>(FOCUSABLE);
     firstFocusable?.focus();
     return () => {
       document.body.style.overflow = prevOverflow;
+      trigger?.focus();
     };
   }, [isOpen]);
 
@@ -80,11 +82,13 @@ export function Modal({
     <div
       className={styles.backdrop}
       onClick={closeOnBackdrop ? onClose : undefined}
-      aria-modal="true"
+      onKeyDown={closeOnBackdrop ? (e) => { if (e.key === 'Enter') onClose(); } : undefined}
+      role="presentation"
     >
       <div
         ref={panelRef}
         role="dialog"
+        aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         className={[styles.panel, styles[size], className].filter(Boolean).join(' ')}
         onClick={(e) => e.stopPropagation()}
@@ -93,9 +97,9 @@ export function Modal({
         {(title || true) && (
           <div className={styles.header}>
             {title && (
-              <span id={titleId} className={styles.title}>
+              <h2 id={titleId} className={styles.title}>
                 {title}
-              </span>
+              </h2>
             )}
             <button
               type="button"

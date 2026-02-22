@@ -23,6 +23,7 @@ export function Radio({
         type="radio"
         className={styles.nativeInput}
         disabled={disabled}
+        aria-invalid={error ? true : undefined}
         {...rest}
       />
       <span className={styles.control} aria-hidden="true" />

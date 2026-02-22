@@ -146,7 +146,7 @@
 
   --color-text-primary:   var(--neutral-800);
   --color-text-secondary: var(--neutral-600);
-  --color-text-muted:     var(--neutral-400);
+  --color-text-muted:     var(--neutral-500);
   --color-text-disabled:  var(--neutral-300);
   --color-text-inverse:   var(--white);
   --color-text-brand:     var(--blue-500);

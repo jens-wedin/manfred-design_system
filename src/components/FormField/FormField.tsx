@@ -39,7 +39,11 @@ export function FormField({
       </label>
       {children}
       {message && (
-        <span className={[styles.message, status !== 'default' ? styles[status] : styles.hint].filter(Boolean).join(' ')}>
+        <span
+          role={status === 'error' ? 'alert' : undefined}
+          aria-live={status === 'success' || status === 'hint' ? 'polite' : undefined}
+          className={[styles.message, status !== 'default' ? styles[status] : styles.hint].filter(Boolean).join(' ')}
+        >
           {iconName && <Icon name={iconName} size="xs" />}
           {message}
         </span>
