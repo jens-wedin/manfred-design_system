@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import React from 'react';
 import { Tooltip } from './Tooltip';
 import { Button } from '../Button';
@@ -60,4 +61,113 @@ export const WithDelay: Story = {
       </Tooltip>
     </div>
   ),
+};
+
+// ── Coverage-improving stories ───────────────────────────────────────────────
+
+// Play: hover → wait for show timeout → unhover.
+// Covers: show callback, setTimeout inner fn, computePosition('top'), setVisible,
+//         hide callback, clearTimeout, onMouseEnter, onMouseLeave handlers.
+export const ShowOnHover: Story = {
+  render: () => (
+    <div style={{ padding: '80px' }}>
+      <Tooltip content="Hover tooltip" placement="top" delay={0}>
+        <Button>Hover me</Button>
+      </Tooltip>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const btn = canvas.getByRole('button', { name: 'Hover me' });
+    await userEvent.hover(btn);
+    // Allow the 0ms setTimeout to fire before unhovering
+    await new Promise<void>((r) => setTimeout(r, 50));
+    await userEvent.unhover(btn);
+  },
+};
+
+// Play: hover each placement — covers computePosition for all 4 switch cases.
+export const AllPlacementsHover: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', padding: '80px' }}>
+      {(['top', 'bottom', 'left', 'right'] as const).map((p) => (
+        <Tooltip key={p} content={`${p} tooltip`} placement={p} delay={0}>
+          <Button>{p}</Button>
+        </Tooltip>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    for (const name of ['top', 'bottom', 'left', 'right'] as const) {
+      const btn = canvas.getByRole('button', { name });
+      await userEvent.hover(btn);
+      await new Promise<void>((r) => setTimeout(r, 50));
+      await userEvent.unhover(btn);
+    }
+  },
+};
+
+// Play: focus → blur — covers onFocus and onBlur handlers.
+export const FocusAndBlur: Story = {
+  render: () => (
+    <div style={{ padding: '80px', display: 'flex', gap: '24px' }}>
+      <Tooltip content="Focus tooltip" placement="top" delay={0}>
+        <Button>Focus me</Button>
+      </Tooltip>
+      <Button>Tab to here</Button>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const tooltipBtn = canvas.getByRole('button', { name: 'Focus me' });
+    tooltipBtn.focus();
+    await new Promise<void>((r) => setTimeout(r, 50));
+    // Tab away to trigger blur → hide
+    await userEvent.tab();
+  },
+};
+
+// Play: hover then press Escape — covers the onKeyDown handler (Escape → hide).
+export const EscapeHide: Story = {
+  render: () => (
+    <div style={{ padding: '80px' }}>
+      <Tooltip content="Press Escape to hide" placement="top" delay={0}>
+        <Button>Hover then Escape</Button>
+      </Tooltip>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const btn = canvas.getByRole('button', { name: 'Hover then Escape' });
+    await userEvent.hover(btn);
+    await new Promise<void>((r) => setTimeout(r, 50));
+    await userEvent.keyboard('{Escape}');
+  },
+};
+
+// Covers the children.props.onMouseEnter?.(e) truthy branch by providing a
+// child that already has onMouseEnter/onMouseLeave/onFocus/onBlur handlers.
+export const WithPassthroughHandlers: Story = {
+  render: () => (
+    <div style={{ padding: '80px' }}>
+      <Tooltip content="Passthrough" placement="bottom" delay={0}>
+        <Button
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+          onFocus={() => {}}
+          onBlur={() => {}}
+        >
+          Has handlers
+        </Button>
+      </Tooltip>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const btn = canvas.getByRole('button', { name: 'Has handlers' });
+    await userEvent.hover(btn);
+    await new Promise<void>((r) => setTimeout(r, 50));
+    await userEvent.unhover(btn);
+  },
 };

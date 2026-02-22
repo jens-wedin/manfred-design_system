@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
+import { userEvent, within } from 'storybook/test';
 import { ToastContainer, useToast } from './Toast';
 import { Button } from '../Button';
 
@@ -110,5 +110,88 @@ export const Positions: Story = {
         <ToastContainer toasts={bc.toasts} onDismiss={bc.dismiss} position="bottom-center" />
       </>
     );
+  },
+};
+
+// ── Coverage-improving stories ───────────────────────────────────────────────
+
+// Renders ToastEntry immediately — covers ToastEntry render path, useEffect timer
+// setup, and the auto-dismiss timer branch (duration > 0).
+export const StaticToasts: Story = {
+  render: () => (
+    <ToastContainer
+      toasts={[
+        { id: '1', variant: 'info', message: 'Informational toast' },
+        { id: '2', variant: 'success', title: 'Done', message: 'Success!' },
+        { id: '3', variant: 'warning', message: 'Warning toast' },
+        { id: '4', variant: 'error', title: 'Error', message: 'Something failed.' },
+      ]}
+      onDismiss={() => {}}
+    />
+  ),
+};
+
+// duration: 0 → covers the `if (duration > 0)` false branch (no timer set).
+export const NoDismiss: Story = {
+  render: () => (
+    <ToastContainer
+      toasts={[{ id: '1', variant: 'info', message: 'Stays forever', duration: 0 }]}
+      onDismiss={() => {}}
+    />
+  ),
+};
+
+// All four position CSS classes rendered at once.
+export const AllPositionsStatic: Story = {
+  render: () => (
+    <>
+      <ToastContainer
+        toasts={[{ id: 'tr', variant: 'info', message: 'Top right', duration: 0 }]}
+        onDismiss={() => {}}
+        position="top-right"
+      />
+      <ToastContainer
+        toasts={[{ id: 'tc', variant: 'success', message: 'Top center', duration: 0 }]}
+        onDismiss={() => {}}
+        position="top-center"
+      />
+      <ToastContainer
+        toasts={[{ id: 'br', variant: 'warning', message: 'Bottom right', duration: 0 }]}
+        onDismiss={() => {}}
+        position="bottom-right"
+      />
+      <ToastContainer
+        toasts={[{ id: 'bc', variant: 'error', message: 'Bottom center', duration: 0 }]}
+        onDismiss={() => {}}
+        position="bottom-center"
+      />
+    </>
+  ),
+};
+
+// Play: show a toast → click Dismiss — covers the dismiss callback, the
+// exiting animation state, and useToast's dismiss function.
+export const DismissInteraction: Story = {
+  render: () => {
+    const { toasts, show, dismiss } = useToast();
+    return (
+      <>
+        <Button
+          onClick={() =>
+            show({ variant: 'warning', title: 'Heads up', message: 'Click X to dismiss', duration: 0 })
+          }
+        >
+          Show Toast
+        </Button>
+        <ToastContainer toasts={toasts} onDismiss={dismiss} />
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('button', { name: 'Show Toast' }));
+    const body = within(document.body);
+    const closeBtn = await body.findByRole('button', { name: 'Dismiss alert' });
+    await userEvent.click(closeBtn);
   },
 };
