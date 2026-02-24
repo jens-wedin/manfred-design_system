@@ -18,13 +18,13 @@ export { Badge } from './components/Badge';
 export type { BadgeProps, BadgeVariant, BadgeSize } from './components/Badge';
 
 export { Breadcrumb } from './components/Breadcrumb';
-export type { BreadcrumbProps } from './components/Breadcrumb';
+export type { BreadcrumbProps, BreadcrumbItem } from './components/Breadcrumb';
 
 export { Checkbox } from './components/Checkbox';
 export type { CheckboxProps } from './components/Checkbox';
 
 export { FormField } from './components/FormField';
-export type { FormFieldProps } from './components/FormField';
+export type { FormFieldProps, FormFieldStatus } from './components/FormField';
 
 export { Icon } from './components/Icon';
 export type { IconProps, IconName, IconSize } from './components/Icon';
@@ -33,19 +33,19 @@ export { Modal } from './components/Modal';
 export type { ModalProps } from './components/Modal';
 
 export { ProgressBar } from './components/ProgressBar';
-export type { ProgressBarProps } from './components/ProgressBar';
+export type { ProgressBarProps, ProgressBarVariant, ProgressBarSize } from './components/ProgressBar';
 
 export { Radio } from './components/Radio';
 export type { RadioProps } from './components/Radio';
 
 export { SearchBar } from './components/SearchBar';
-export type { SearchBarProps } from './components/SearchBar';
+export type { SearchBarProps, SearchBarSize } from './components/SearchBar';
 
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps, SpinnerSize } from './components/Spinner';
 
 export { TextInput } from './components/TextInput';
-export type { TextInputProps } from './components/TextInput';
+export type { TextInputProps, TextInputSize, TextInputStatus } from './components/TextInput';
 
 export { ToastContainer, useToast } from './components/Toast';
 export type { ToastContainerProps, ToastItem, ToastPosition as ToastPositionType } from './components/Toast';
