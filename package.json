@@ -1,9 +1,29 @@
 {
-  "name": "@manfred/design-system",
+  "name": "@jens-wedin/design-system",
   "version": "0.1.0",
   "description": "Manfred Design System — brand tokens, typography, and core components",
-  "main": "src/index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "vite build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -15,7 +35,14 @@
   ],
   "author": "Manfred",
   "license": "UNLICENSED",
-  "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
@@ -36,6 +63,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
     "vite": "^5.4.21",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.18"
   }
 }

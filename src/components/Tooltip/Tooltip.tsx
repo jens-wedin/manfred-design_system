@@ -8,7 +8,9 @@ export interface TooltipProps {
   content: React.ReactNode;
   placement?: TooltipPlacement;
   delay?: number;
-  children: React.ReactElement;
+  children: React.ReactElement<
+    React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>
+  >;
 }
 
 interface Position {
@@ -76,23 +78,23 @@ export function Tooltip({ content, placement = 'top', delay = 200, children }: T
 
   const trigger = React.cloneElement(children, {
     ref: triggerRef,
-    onMouseEnter: (e: React.MouseEvent) => {
+    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
       children.props.onMouseEnter?.(e);
       show();
     },
-    onMouseLeave: (e: React.MouseEvent) => {
+    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
       children.props.onMouseLeave?.(e);
       hide();
     },
-    onFocus: (e: React.FocusEvent) => {
+    onFocus: (e: React.FocusEvent<HTMLElement>) => {
       children.props.onFocus?.(e);
       show();
     },
-    onBlur: (e: React.FocusEvent) => {
+    onBlur: (e: React.FocusEvent<HTMLElement>) => {
       children.props.onBlur?.(e);
       hide();
     },
-    onKeyDown: (e: React.KeyboardEvent) => {
+    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
       children.props.onKeyDown?.(e);
       if (e.key === 'Escape') hide();
     },
