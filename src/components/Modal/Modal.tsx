@@ -85,11 +85,16 @@ export function Modal({
       onKeyDown={closeOnBackdrop ? (e) => { if (e.key === 'Enter') onClose(); } : undefined}
       role="presentation"
     >
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions --
+          role="dialog" requires keyboard handling (Tab focus-trap, Escape-to-close).
+          This is correct ARIA practice; jsx-a11y classifies dialog as structural
+          but WAI-ARIA authoring practices mandate keyboard interaction on modals. */}
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
+        tabIndex={-1}
         className={[styles.panel, styles[size], className].filter(Boolean).join(' ')}
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}

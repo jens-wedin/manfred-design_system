@@ -19,11 +19,13 @@ export function Radio({
         .filter(Boolean)
         .join(' ')}
     >
+      {/* aria-invalid is not supported on role="radio" per ARIA spec.
+          Error state is communicated visually and at the group/FormField level
+          via aria-describedby on the containing fieldset or form field. */}
       <input
         type="radio"
         className={styles.nativeInput}
         disabled={disabled}
-        aria-invalid={error ? true : undefined}
         {...rest}
       />
       <span className={styles.control} aria-hidden="true" />
